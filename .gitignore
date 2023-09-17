@@ -407,3 +407,7 @@ FodyWeavers.xsd
 Семинар*
 /Буткемп
 /Знакомство с базами данных (семинары)
+/folder
+main.py
+pyvenv.cfg
+/lib/python3.11/site-packages
