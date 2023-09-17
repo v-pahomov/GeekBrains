@@ -410,4 +410,4 @@ FodyWeavers.xsd
 /python/folder
 main.py
 pyvenv.cfg
-/lib/python3.11/site-packages/
+/python/lib/
