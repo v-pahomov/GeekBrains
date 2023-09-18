@@ -2,10 +2,8 @@
 
 n = int(input("Введите число: "))
 
-i = 0
-count = 0
-print(f'{n} => ', end = "")
+i = 1
+print(f'{n} => 1   ', end = "")
 while i * 2 <= n:
-    i = 2 ** count
+    i = 2 * i
     print(i, end = "   ")
-    count += 1
