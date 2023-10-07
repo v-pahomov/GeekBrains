@@ -417,3 +417,5 @@ itogovaya_kontrolnaya_rabota_ci_sharp/
 /Знакомство с C#/Итоговая контрольная/
 main*
 README*
+!/python/Seminar_8/README.md
+!/python/Seminar_8/main.py
