@@ -13,3 +13,6 @@ else Console.WriteLine($"-> max = {b}");
 
 if (a > b) Console.WriteLine($"-> min = {b}");
 else Console.WriteLine($"-> min = {a}");
+
+
+// йцукенгш
