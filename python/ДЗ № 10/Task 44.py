@@ -6,4 +6,4 @@ lst = ['robot'] * 10
 lst += ['human'] * 10
 random.shuffle(lst)
 data = pd.DataFrame({'whoAmI':lst})
-pd.get_dummies(data, columns=['whoAmI'], drop_first=True)
+pd.get_dummies(data['whoAmI'])
