@@ -411,10 +411,9 @@ FodyWeavers.xsd
 main.py
 pyvenv.cfg
 /python/lib/
-Знакомство с C#/Итоговая контрольная/
-itogovaya_kontrolnaya_rabota_ci_sharp/
-Итоговая контрольная*
-/Знакомство с C#/Итоговая контрольная/
+
+
+
 main*
 README*
 !/python/Seminar_8/README.md
@@ -429,4 +428,4 @@ Task 44.py
 /Знакомство с Java/program.Java
 /log.txt
 .DS_Store
-
+/itogovaya_kontrolnaya_rabota_ci_sharp
