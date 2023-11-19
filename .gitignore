@@ -429,3 +429,11 @@ Task 44.py
 /log.txt
 .DS_Store
 /itogovaya_kontrolnaya_rabota_ci_sharp
+Printer.java
+
+GeekBrains.sln
+!Sem6.java
+/Знакомство с Java/.idea
+/Знакомство с Java/out**
+/Знакомство с Java/Знакомство с Java.iml
+/Знакомство с Java/log.txt
