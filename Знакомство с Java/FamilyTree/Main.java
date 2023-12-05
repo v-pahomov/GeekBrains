@@ -7,7 +7,8 @@ public class Main {
         FamilyTree tree = testTree();
         System.out.println(tree);
     }
-    static FamilyTree testTree(){
+
+    static FamilyTree testTree() {
         FamilyTree tree = new FamilyTree();
 
         Human vasya = new Human("Василий", Gender.Male, LocalDate.of(1963, 12, 10));

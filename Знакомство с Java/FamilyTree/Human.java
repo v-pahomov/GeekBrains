@@ -34,65 +34,86 @@ public class Human {
     public Human(String name, Gender gender, LocalDate birthDate, Human father, Human mother) {
         this(name, gender, birthDate, null, father, mother);
     }
-    public boolean addChild(Human child){
-        if(!children.contains(child)){
+
+    public boolean addChild(Human child) {
+        if (!children.contains(child)) {
             children.add(child);
             return true;
         }
         return false;
     }
-    public boolean addParent(Human parent){
-        if(parent.getGender().equals(Gender.Male)) {
+
+    public boolean addParent(Human parent) {
+        if (parent.getGender().equals(Gender.Male)) {
             setFather(parent);
-        } else if(parent.getGender().equals(Gender.Female)){
+        } else if (parent.getGender().equals(Gender.Female)) {
             setMother(parent);
         }
         return true;
     }
 
-    public Gender getGender() { return gender; }
+    public Gender getGender() {
+        return gender;
+    }
 
     private void setMother(Human mother) {
         this.mother = mother;
     }
 
-    private void setFather(Human father) { this.father = father; }
+    private void setFather(Human father) {
+        this.father = father;
+    }
 
-    public Human getMother() {return mother;}
+    public Human getMother() {
+        return mother;
+    }
 
-    public Human setFather() {return father;}
+    public Human getFather() {
+        return father;
+    }
 
-    public void setSpouse(Human spouse){ this.spouse = spouse; }
+    public void setSpouse(Human spouse) {
+        this.spouse = spouse;
+    }
 
-    public Human getSpouse() { return spouse; }
+    public Human getSpouse() {
+        return spouse;
+    }
 
-    public List<Human> getParents(){
+    public List<Human> getParents() {
         List<Human> list = new ArrayList<Human>(2);
-        if (father != null) { list.add(father); }
-        if (mother != null) { list.add(mother); }
+        if (father != null) {
+            list.add(father);
+        }
+        if (mother != null) {
+            list.add(mother);
+        }
         return list;
     }
 
-    public List<Human> getChildren() { return children; }
-    private int getPeriod(LocalDate birthDate, LocalDate deathDate){
+    public List<Human> getChildren() {
+        return children;
+    }
+
+    private int getPeriod(LocalDate birthDate, LocalDate deathDate) {
         Period diff = Period.between(birthDate, deathDate);
         return diff.getYears();
     }
-    public int getAge(){
-        if (deathDate == null){
+
+    public int getAge() {
+        if (deathDate == null) {
             return getPeriod(birthDate, LocalDate.now());
         } else {
             return getPeriod(birthDate, deathDate);
         }
     }
 
-
     @Override
     public String toString() {
         return getInfo();
     }
 
-    public String getInfo(){
+    public String getInfo() {
         StringBuilder sb = new StringBuilder();
         sb.append("id: ");
         sb.append(id);
@@ -114,9 +135,9 @@ public class Human {
     private String getChildrenInfo() {
         StringBuilder res = new StringBuilder();
         res.append("дети: ");
-        if(!children.isEmpty()){
+        if (!children.isEmpty()) {
             res.append(children.get(0).getName());
-            for (int i = 1; i < children.size(); i++){
+            for (int i = 1; i < children.size(); i++) {
                 res.append(", ");
                 res.append(children.get(i).getName());
             }
@@ -128,7 +149,7 @@ public class Human {
 
     private String getFatherInfo() {
         String res = "отец: ";
-        if (father != null){
+        if (father != null) {
             res += father.getName();
         } else {
             return "неизвестен";
@@ -138,7 +159,7 @@ public class Human {
 
     private String getMotherInfo() {
         String res = "мать: ";
-        if (mother != null){
+        if (mother != null) {
             res += mother.getName();
         } else {
             return "неизвестна";
@@ -148,7 +169,7 @@ public class Human {
 
     private String getSpouseInfo() {
         String res = "супруг(а): ";
-        if (spouse == null){
+        if (spouse == null) {
             return "нет";
         } else {
             res += spouse.getName();
@@ -156,30 +177,28 @@ public class Human {
         return res;
     }
 
-    private String getName() {return name; }
+    private String getName() {
+        return name;
+    }
 
     @Override
-    public boolean equals(Object obj){
+    public boolean equals(Object obj) {
         if (this == obj) {
             return true;
         }
-        if (!(obj instanceof Human)){
+        if (!(obj instanceof Human)) {
             return false;
         }
         Human human = (Human) obj;
         return human.getId() == getId();
     }
 
-    private long getId() { return id; }
+    private long getId() {
+        return id;
+    }
 
     public boolean setId(long id) {
         this.id = id;
         return true;
     }
-
-
-
-
-
 }
-
