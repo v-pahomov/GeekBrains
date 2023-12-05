@@ -414,7 +414,7 @@ pyvenv.cfg
 
 
 
-main*
+
 README*
 !/python/Seminar_8/README.md
 !/python/Seminar_8/main.py
@@ -437,3 +437,6 @@ GeekBrains.sln
 /Знакомство с Java/out**
 /Знакомство с Java/Знакомство с Java.iml
 /Знакомство с Java/log.txt
+!/Знакомствсо с Java/FamilyTree/Main.java
+/Знакомствсо с Java/VeningMachine
+/Знакомствсо с Java/FamilyTree/!Main.java

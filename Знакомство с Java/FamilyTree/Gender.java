@@ -1,2 +1,5 @@
-package FamilyTree;public class Gender {
+package FamilyTree;
+
+public enum Gender {
+    Male, Female
 }
