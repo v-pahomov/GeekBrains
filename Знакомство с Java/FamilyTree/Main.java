@@ -1,7 +1,8 @@
 package FamilyTree;
 
-import FamilyTree.Human.Gender;
-import FamilyTree.Human.Human;
+import FamilyTree.family_tree.FamilyTree;
+import FamilyTree.human.Gender;
+import FamilyTree.human.Human;
 import FamilyTree.writer.FileHandler;
 import java.time.LocalDate;
 
