@@ -1,9 +1,12 @@
 package FamilyTree;
 
+import FamilyTree.Human.Human;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FamilyTree {
+public class FamilyTree implements Serializable {
     private long humansId;
     private List<Human> humanList;
 
@@ -67,5 +70,15 @@ public class FamilyTree {
             sb.append("\n");
         }
         return sb.toString();
+    }
+    
+    public Human getByName(String name) {
+        Human hum = null;
+        for (Human human: humanList) {
+            if(human.getName().equals(name)){
+                hum = human;
+            }
+        }
+        return hum;
     }
 }

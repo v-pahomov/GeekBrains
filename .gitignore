@@ -431,10 +431,16 @@ Task 44.py
 /itogovaya_kontrolnaya_rabota_ci_sharp
 Printer.java
 
+/.idea
 GeekBrains.sln
 !Sem6.java
 /Знакомство с Java/.idea
 /Знакомство с Java/out**
 /Знакомство с Java/Знакомство с Java.iml
 /Знакомство с Java/log.txt
-
+/Знакомство с Java/VendingMachine/
+FamilyTree.iml
+/Знакомство с Java/FamilyTree/.idea/
+/Знакомство с Java/FamilyTree/out/
+/FamilyTree/writer/tree.txt
+tree.txt

@@ -1,13 +1,35 @@
 package FamilyTree;
 
+import FamilyTree.Human.Gender;
+import FamilyTree.Human.Human;
+import FamilyTree.writer.FileHandler;
 import java.time.LocalDate;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args){
         FamilyTree tree = testTree();
         System.out.println(tree);
+        save(tree);
+
+        FamilyTree tree1 = load();
+        Human grandFather = new Human("Петр", Gender.Male, LocalDate.of(1937, 3, 5));
+        grandFather.addChild(tree1.getByName("Мария"));
+        tree1.getByName("Мария").addParent(grandFather);
+        tree1.add(grandFather);
+        System.out.println(tree1);
     }
 
+    public static FamilyTree load(){
+        String filePath = "writer/tree.txt";
+        FileHandler fileHandler = new FileHandler();
+        return (FamilyTree) fileHandler.read(filePath);
+    }
+
+    public static void save(FamilyTree tree){
+        String filePath = "writer/tree.txt";
+        FileHandler fileHandler = new FileHandler();
+        fileHandler.save(tree, filePath);
+    }
     static FamilyTree testTree() {
         FamilyTree tree = new FamilyTree();
 
