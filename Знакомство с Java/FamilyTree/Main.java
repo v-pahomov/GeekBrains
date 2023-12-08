@@ -8,15 +8,11 @@ import java.time.LocalDate;
 
 public class Main {
     public static void main(String[] args){
-        FamilyTree tree = testTree();
-        System.out.println(tree);
-        save(tree);
-
         FamilyTree tree1 = load();
-        Human grandFather = new Human("Петр", Gender.Male, LocalDate.of(1937, 3, 5));
-        grandFather.addChild(tree1.getByName("Мария"));
-        tree1.getByName("Мария").addParent(grandFather);
-        tree1.add(grandFather);
+        System.out.println(tree1);
+        tree1.sortByAge();
+        System.out.println(tree1);
+        tree1.sortByName();
         System.out.println(tree1);
     }
 

@@ -44,15 +44,11 @@ public class Human implements Serializable {
         return false;
     }
 
-    public boolean addParent(Human parent) {
+    public void addParent(Human parent) {
         if (parent.getGender().equals(Gender.Male)) {
             setFather(parent);
-            return true;
         } else if (parent.getGender().equals(Gender.Female)) {
             setMother(parent);
-            return true;
-        } else {
-            return false;
         }
     }
 
@@ -62,11 +58,11 @@ public class Human implements Serializable {
 
     public String getName() { return name; }
 
-    private void setMother(Human mother) {
+    public void setMother(Human mother) {
         this.mother = mother;
     }
 
-    private void setFather(Human father) {
+    public void setFather(Human father) {
         this.father = father;
     }
 
@@ -195,8 +191,12 @@ public class Human implements Serializable {
         return human.getId() == getId();
     }
 
-    private long getId() {
+    public long getId() {
         return id;
+    }
+
+    public LocalDate getBirthDate() {
+        return birthDate;
     }
 
     public boolean setId(long id) {

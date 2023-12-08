@@ -1,6 +1,8 @@
 package FamilyTree.family_tree;
 
 import FamilyTree.human.Human;
+import FamilyTree.human.comparator.HumanComparatorByAge;
+import FamilyTree.human.comparator.HumanComparatorByName;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -55,6 +57,17 @@ public class FamilyTree implements Serializable {
         }
     }
 
+    public void setParentAndChild(Human mother, Human father, Human child) {
+        mother.addChild(child);
+        father.addChild(child);
+        long id = child.getId();
+        Human children = removeFromTree(child);
+        children.addParent(mother);
+        children.addParent(father);
+        children.setId(id);
+        add(children);
+    }
+
     @Override
     public String toString() {
         return getInfo();
@@ -80,5 +93,28 @@ public class FamilyTree implements Serializable {
             }
         }
         return hum;
+    }
+
+    public Human getByID (long id) {
+        Human hum = null;
+        for (Human human: humanList) {
+            if(human.getId() == id){
+                hum = human;
+            }
+        }
+        return hum;
+    }
+    public Human removeFromTree(Human human) {
+        Human removeHuman = humanList.get((int) human.getId());
+        humanList.remove(human);
+        return removeHuman;
+    }
+
+    public void sortByName(){
+        humanList.sort(new HumanComparatorByName());
+    }
+
+    public void sortByAge(){
+        humanList.sort(new HumanComparatorByAge());
     }
 }
