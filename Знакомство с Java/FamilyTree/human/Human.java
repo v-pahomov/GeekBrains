@@ -1,12 +1,15 @@
 package FamilyTree.human;
 
+import FamilyTree.family_tree.FamilyTreeItem;
+import FamilyTree.family_tree.TreeNode;
+
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Human implements Serializable {
+public class Human implements Serializable, TreeNode<Human>, FamilyTreeItem {
     private long id;
     private String name;
     private Gender gender;
@@ -44,12 +47,15 @@ public class Human implements Serializable {
         return false;
     }
 
-    public void addParent(Human parent) {
+    public boolean addParent(Human parent) {
         if (parent.getGender().equals(Gender.Male)) {
             setFather(parent);
+            return true;
         } else if (parent.getGender().equals(Gender.Female)) {
             setMother(parent);
+            return true;
         }
+        return false;
     }
 
     public Gender getGender() {
@@ -57,6 +63,11 @@ public class Human implements Serializable {
     }
 
     public String getName() { return name; }
+
+    @Override
+    public LocalDate getDeathDate() {
+        return deathDate;
+    }
 
     public void setMother(Human mother) {
         this.mother = mother;

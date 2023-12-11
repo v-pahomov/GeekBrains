@@ -6,21 +6,22 @@ import FamilyTree.human.comparator.HumanComparatorByName;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
-public class FamilyTree implements Serializable {
+public class FamilyTree<T extends TreeNode<T> & FamilyTreeItem> implements Iterable<T>, Serializable {
     private long humansId;
-    private List<Human> humanList;
+    private List<T> humanList;
 
     public FamilyTree() {
         this(new ArrayList<>());
     }
 
-    public FamilyTree(List<Human> humanList) {
+    public FamilyTree(List<T> humanList) {
         this.humanList = humanList;
     }
 
-    public boolean add(Human human) {
+    public boolean add(T human) {
         if (human == null) {
             return false;
         }
@@ -35,19 +36,19 @@ public class FamilyTree implements Serializable {
         return false;
     }
 
-    private void addToChildren(Human human) {
-        for (Human child : human.getChildren()) {
+    private void addToChildren(T human) {
+        for (T child : human.getChildren()) {
             child.addParent(human);
         }
     }
 
-    private void addToParents(Human human) {
-        for (Human parent : human.getParents()) {
+    private void addToParents(T human) {
+        for (T parent : human.getParents()) {
             parent.addChild(human);
         }
     }
 
-    public boolean setWedding(Human human1, Human human2) {
+    public boolean setWedding(T human1, T human2) {
         if (human1.getSpouse() == null && human2.getSpouse() == null) {
             human1.setSpouse(human2);
             human2.setSpouse(human1);
@@ -57,15 +58,12 @@ public class FamilyTree implements Serializable {
         }
     }
 
-    public void setParentAndChild(Human mother, Human father, Human child) {
+    public void setParentAndChild(T mother, T father, T child) {
         mother.addChild(child);
         father.addChild(child);
-        long id = child.getId();
-        Human children = removeFromTree(child);
-        children.addParent(mother);
-        children.addParent(father);
-        children.setId(id);
-        add(children);
+        child.addParent(mother);
+        child.addParent(father);
+        add(child);
     }
 
     @Override
@@ -78,16 +76,16 @@ public class FamilyTree implements Serializable {
         sb.append("В дереве ");
         sb.append(humanList.size());
         sb.append(" объектов: \n");
-        for (Human human : humanList) {
+        for (T human : humanList) {
             sb.append(human);
             sb.append("\n");
         }
         return sb.toString();
     }
     
-    public Human getByName(String name) {
-        Human hum = null;
-        for (Human human: humanList) {
+    public T getByName(String name) {
+        T hum = null;
+        for (T human: humanList) {
             if(human.getName().equals(name)){
                 hum = human;
             }
@@ -95,26 +93,35 @@ public class FamilyTree implements Serializable {
         return hum;
     }
 
-    public Human getByID (long id) {
-        Human hum = null;
-        for (Human human: humanList) {
+    public T getByID (long id) {
+        T hum = null;
+        for (T human: humanList) {
             if(human.getId() == id){
                 hum = human;
             }
         }
         return hum;
     }
-    public Human removeFromTree(Human human) {
-        Human removeHuman = humanList.get((int) human.getId());
+    public T removeFromTree(T human) {
+        T removeHuman = humanList.get((int) human.getId());
         humanList.remove(human);
         return removeHuman;
     }
 
+    public List<T> getHumanList() {
+        return humanList;
+    }
+
     public void sortByName(){
-        humanList.sort(new HumanComparatorByName());
+        humanList.sort(new HumanComparatorByName<>());
     }
 
     public void sortByAge(){
-        humanList.sort(new HumanComparatorByAge());
+        humanList.sort(new HumanComparatorByAge<>());
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return new FamilyTreeIterator<>(humanList);
     }
 }
